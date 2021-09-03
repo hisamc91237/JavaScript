@@ -1,15 +1,27 @@
-// Data Types
-let age = 20
-let Name = 'Hisam'
-console.log(age)
-console.log(Name)
-console.log(typeof age)
+// Arithematic Operator
+const a = 2
+const b = 10
 
-let brand 
-console.log(brand)
+let c = 5
 
-let arr = [1 ,2 ,3 ,4]
-arr.push("value")
-arr.push(false)
-console.log(arr)
-console.log(typeof arr)
+console.log(a + b)
+console.log(a - b)
+console.log(a * b)
+console.log(a / b)
+console.log(a ** b)
+console.log('-------Assignment Operators-----------')
+// Assignment Operators
+c *= 5 
+// c = c * 5
+
+console.log(c)
+
+let d = 5
+d /= 5 
+// d = d / 5
+
+console.log(d)
+
+
+
+
