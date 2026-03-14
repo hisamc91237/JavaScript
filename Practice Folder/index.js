@@ -1,1 +1,1 @@
-console.log("Javascript");
+let a = b;
