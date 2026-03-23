@@ -1,10 +1,9 @@
-function infinite(...args) {
-  let ans = 0;
-  args.forEach((x) => {
-    ans += x;
-  });
-  return ans;
-}
+let btn = document.querySelector("button");
+let title = document.querySelector("h1");
+let counter = 0;
 
-let sumAns = infinite(10, 20, 30);
-console.log(sumAns);
+btn.addEventListener("click", () => {
+  counter++;
+  console.log(counter);
+  title.textContent = `Counter is ${counter}`;
+});
