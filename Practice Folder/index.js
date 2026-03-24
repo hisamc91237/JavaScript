@@ -1,23 +1,50 @@
 let btn = document.querySelector("button");
-let main = document.querySelector("main");
 
-btn.addEventListener("click", () => {
-  let x = Math.floor(Math.random() * 256);
-  let y = Math.floor(Math.random() * 256);
-  let z = Math.floor(Math.random() * 256);
+let loader = document.querySelector(".inner");
+let newButtonParent = document.querySelector(".btngrp");
 
-  let a = Math.floor(Math.random() * 100);
-  let b = Math.floor(Math.random() * 100);
-  let c = Math.floor(Math.random() * 360);
+let title = document.querySelector("h2");
 
-  let div = document.createElement("div");
-  main.appendChild(div);
-  div.style.height = "100px";
-  div.style.width = " 100px";
-  div.style.backgroundColor = `rgb(${x},${y},${z})`;
-  div.style.position = "absolute";
-  div.style.top = a + "%";
-  div.style.left = b + "%";
-  div.style.rotate = c + "deg";
-  div.style.overflow = "none";
-});
+let load = 0;
+let intervalStop = null;
+
+let startDownload = () => {
+  load = 0; // reset load everytime
+  loader.style.width = "0%";
+
+  // create cancel button
+  let cancelButton = document.createElement("button");
+  cancelButton.textContent = "Cancel Now";
+  cancelButton.classList.add("cancelBtn");
+  newButtonParent.appendChild(cancelButton);
+
+  // hide the button
+  btn.style.display = "none";
+
+  // start loader
+  intervalStop = setInterval(() => {
+    if (load >= 100) {
+      clearInterval(intervalStop);
+      title.textContent = "Download Complete! ✅";
+      cancelButton.remove();
+      btn.style.display = "block"; // ✅ show download button again
+      return;
+    }
+    load++;
+    title.textContent = `Downloading : ${load}%`;
+    loader.style.width = load + "%";
+  }, 50);
+
+  // cancel button logic
+  cancelButton.addEventListener("click", () => {
+    clearInterval(intervalStop); // ✅ stop the loader
+    load = 0; // ✅ reset load
+    loader.style.width = "0%"; // ✅ reset loader bar
+    title.textContent = "Download Cancelled ❌";
+    cancelButton.remove(); // ✅ remove cancel button
+    btn.style.display = "block"; // ✅ show download button again
+  });
+};
+
+// ✅ only one event listener on btn, never stacks
+btn.addEventListener("click", startDownload);
