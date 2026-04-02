@@ -18,6 +18,22 @@ body {
     align-items: center;
 }
 
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes borderAnimate {
+    from {
+        --rotate: 0deg;
+    }
+
+    to {
+        --rotate: 360deg;
+    }
+}
+
 .card {
     max-width: 300px;
     color: #fff;
@@ -28,9 +44,25 @@ body {
     align-items: center;
     padding-inline: 10px;
     padding-bottom: 10px;
-    box-shadow: 0 0 50px #997ce3;
+    border-radius: 15px;
+    background: linear-gradient(black) padding-box, conic-gradient(from var(--rotate), black, #a683fd, black) border-box;
+    border: 0px solid rgba(255, 255, 255, 0);
+    animation: borderAnimate 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+    transition: all 0.3s linear;
+    box-shadow: 0 0 0px rgb(199, 177, 255);
+    text-shadow: 0 0 0px rgb(199, 177, 255);
 
+}
 
+.card:hover {
+    animation-play-state: running;
+    border-width: 5px;
+    color: #a683fd;
+    box-shadow: 0 0 50px darkviolet;
+    text-shadow: 0 0 10px darkviolet;
 }
 
 .card img {
