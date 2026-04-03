@@ -1,0 +1,241 @@
+:root {
+    --darkMainBg: #2A2018;
+    --darkPanel: #332819;
+    --darkCard: #3E3020;
+    --darkHover: #4C3B28;
+    --darkTitleFont: #F0E2C8;
+    --darkSubtitleFont: #A8916E;
+    --darkButtonFont: #D4935A;
+    --darkButtonFont: #2A2018;
+    --darkButtonHover: #E0A870;
+    --lightMainBg: #F5F0E8;
+    --lightPanel: #EDE6D6;
+    --lightCard: #E4DAC6;
+    --lightHover: #D9CDB5;
+    --lightTitleFont: #3B2F1E;
+    --lightSubtitleFont: #7A6A52;
+    --lightButton: #B87333;
+    --lightButtonFont: #FFF8F0;
+    --lightButtonHover: #A0632A;
+    --red: #7A3428;
+    --green: #3D6B48;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#main {
+    background-color: var(--lightMainBg);
+    height: 100%;
+    width: 100%;
+}
+
+section.allElems {
+    background-color: var(--lightPanel);
+    width: 100%;
+    height: 100%;
+    padding: 25px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+}
+
+.elem {
+    height: 330px;
+    width: 280px;
+    background-color: var(--lightCard);
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+
+.elem img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.elem h2 {
+    color: var(--lightSubtitleFont);
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.elem:active {
+    scale: 0.96;
+}
+
+.fullElems {
+    height: 100%;
+    width: 100%;
+    background-color: var(--lightMainBg);
+    color: var(--lightTitleFont);
+    display: none;
+    position: absolute;
+    padding: 20px;
+}
+
+.close {
+    position: absolute;
+    right: 3%;
+    background-color: var(--red);
+    color: var(--lightButtonFont);
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.close:active {
+    scale: 0.97;
+}
+
+.todo-fullpage {
+    display: block;
+    padding: 30px 20px;
+}
+
+.todo-fullpage h2 {
+    color: var(--lightTitleFont);
+    font-size: 40px;
+}
+
+.todo-fullpage .todo-container {
+    height: 85%;
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo-fullpage .todo-container .addTask {
+    width: 33%;
+    height: 100%;
+    background-color: var(--lightPanel);
+    border-radius: 5px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-fullpage .todo-container .taskList {
+    width: 65%;
+    height: 100%;
+    background-color: var(--lightPanel);
+    border-radius: 5px;
+}
+
+.todo-fullpage .todo-container .addTask form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.todo-fullpage .todo-container .addTask form input {
+    width: 100%;
+    background-color: var(--lightCard);
+    padding: 20px 25px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: var(--lightSubtitleFont);
+    border: none;
+    outline: none;
+    font-weight: 500;
+
+}
+
+.todo-fullpage .todo-container .addTask form textarea {
+    width: 100%;
+    background-color: var(--lightCard);
+    padding: 20px 25px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: var(--lightSubtitleFont);
+    border: none;
+    outline: none;
+    font-weight: 500;
+}
+
+.todo-fullpage .todo-container .addTask form button {
+    width: 100%;
+    background-color: var(--lightButton);
+    padding: 20px 25px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: var(--lightButtonFont);
+    border: none;
+    outline: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.todo-fullpage .todo-container .addTask form button:active {
+    scale: 0.97;
+}
+
+.todo-fullpage .todo-container .addTask form button:hover {
+    background-color: var(--lightButtonHover);
+}
+
+.todo-fullpage .todo-container .taskList .taskList-container {
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+}
+
+.todo-fullpage .todo-container .taskList .taskList-container .task {
+    width: 100%;
+    background-color: var(--lightCard);
+    display: flex;
+    padding: 18px;
+    border-radius: 8px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+
+}
+
+.todo-fullpage .todo-container .taskList .taskList-container .task h4 {
+    color: var(--lightSubtitleFont);
+    font-size: 20px;
+}
+
+.todo-fullpage .todo-container .taskList .taskList-container .task button {
+    background-color: var(--green);
+    color: var(--lightButtonFont);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
