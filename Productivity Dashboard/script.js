@@ -23,27 +23,51 @@ let taskForm = document.querySelector(".addTask form");
 let formInput = document.querySelector(".addTask form input");
 let formTextArea = document.querySelector(".addTask form textarea");
 let taskList = document.querySelector(".taskList-container");
+let markAsCompletedBtn = document.querySelector(".task button");
 
-let task = [];
+function todoPage() {
+  let task = [];
 
-function renderData() {
-  let sum = "";
-  task.forEach((e) => {
-    sum =
-      sum +
-      `<div class="task">
+  if (localStorage.getItem("task")) {
+    task = JSON.parse(localStorage.getItem("task"));
+  } else {
+    console.log("Task list is empty");
+  }
+  function renderData() {
+    let sum = "";
+    task.forEach((e, index) => {
+      sum =
+        sum +
+        `<div class="task">
                             <h4>${e.task}</h4>
-                            <button>Mark As Completed </button>
+                            <button id=${index} class="delete-btn">Mark As Completed </button>
                         </div>`;
-  });
-  taskList.innerHTML = sum;
-}
+    });
+    taskList.innerHTML = sum;
+  }
 
-taskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  task.push({ task: formInput.value, details: formTextArea.value });
   renderData();
 
-  formInput.value = "";
-  formTextArea.value = "";
-});
+  taskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    task.push({ task: formInput.value, details: formTextArea.value });
+    localStorage.setItem("task", JSON.stringify(task));
+
+    formInput.value = "";
+    formTextArea.value = "";
+
+    renderData();
+  });
+
+  taskList.addEventListener("click", (e) => {
+    if ((e.target.classlist = "delete-btn")) {
+      let index = e.target.id;
+      task.splice(index, 1);
+    }
+
+    localStorage.setItem("task", JSON.stringify(task));
+    renderData();
+  });
+}
+
+todoPage();
