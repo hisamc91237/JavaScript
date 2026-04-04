@@ -228,6 +228,7 @@ section.allElems {
 .todo-fullpage .todo-container .taskList .taskList-container .task h4 {
     color: var(--lightSubtitleFont);
     font-size: 20px;
+    font-weight: 600;
 }
 
 .todo-fullpage .todo-container .taskList .taskList-container .task button {
